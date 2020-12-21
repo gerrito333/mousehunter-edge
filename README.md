@@ -2,7 +2,7 @@
 
 Keep your cat’s prey out of your home with a machine learning trained pet door.
 
-##Requirements:
+## Requirements:
 
 * Raspberry Pi 4A
 * Google Coral
@@ -15,11 +15,11 @@ Keep your cat’s prey out of your home with a machine learning trained pet door
 * AWS credentials
 
 
-##Setup:
+## Setup:
 
 Clone this repo on your raspberry and run:
 
-´´´bash
+```bash
 echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 sudo apt-get update
@@ -27,20 +27,20 @@ sudo apt-get install libedgetpu1-std
 pip3 install awscli --upgrade --user
 aws configure
 cp config.yaml ~/.config/mousehunter-edge/config.yaml
-´´´
+```
 
 Configure  ~/.config/mousehunter-edge/config.yaml:
 bucket: configure your AWS Bucket name
 
-´´´bash
+```bash
 sudo systemctl enable mausjaeger.service
 sudo systemctl enable imagewatcher.service
 sudo systemctl start mausjaeger.service
 sudo systemctl start imagewatcher.service
-´´´
+```
 
 
-##Retrain your own object detection model:
+## Retrain your own object detection model:
 
 label you data with labelImg:
 https://github.com/tzutalin/labelImg
@@ -53,13 +53,13 @@ https://coral.ai/docs/edgetpu/retrain-detection/#set-up-the-docker-container
 Copy your TFRecords to docker/object_detection/data
 
 Configure train_input_reader, eval_input_reader and model.ssd.num_classes  the training pipeline:
-´´´
+```
 docker/object_detection/out/ckpt/pipeline.config
-´´´
+```
 Remove all lines following "PREPARING dataset" and execute the prepation script:
-´´´
+```
 docker/object_detection/scripts/prepare_checkpoint_and_dataset.sh
-´´´
+```
 
 Contine to follow the coral.ai tutorial part "Start training" and "Compile the model for the Edge TPU"
 Copy the created model to the imagewatcher/model/ folder.
