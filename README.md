@@ -30,10 +30,14 @@ cp config.yaml ~/.config/mousehunter-edge/config.yaml
 ```
 
 Configure  ~/.config/mousehunter-edge/config.yaml with your AWS bucket name and ensure that aws credentials can read the objects in it.
+Keep APNToken and certfile empty if you do not have it.
 ``` yaml
-bucket: 
+bucket: <your AWS S3 bucket>
+curfewTime: 15
+APNToken: <your Apple Push Notification Service (APNs) Token>
+alertThreshold: 2.0
+certfile: <your Apple certificate for APN for APN usage> 
 ```
-
 
 ```bash
 sudo systemctl enable mausjaeger.service
@@ -41,7 +45,6 @@ sudo systemctl enable imagewatcher.service
 sudo systemctl start mausjaeger.service
 sudo systemctl start imagewatcher.service
 ```
-
 
 ## Retrain your own object detection model:
 
