@@ -29,8 +29,11 @@ aws configure
 cp config.yaml ~/.config/mousehunter-edge/config.yaml
 ```
 
-Configure  ~/.config/mousehunter-edge/config.yaml:
-bucket: configure your AWS Bucket name
+Configure  ~/.config/mousehunter-edge/config.yaml with your AWS bucket name and ensure that aws credentials can read the objects in it.
+``` yaml
+bucket: 
+```
+
 
 ```bash
 sudo systemctl enable mausjaeger.service
