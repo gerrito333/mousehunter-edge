@@ -1,0 +1,14 @@
+[Unit]
+Description=image watcher
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u imagewatcher.py
+WorkingDirectory=/home/pi/PycharmProjects/imagewatcher
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

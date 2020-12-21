@@ -1,0 +1,8 @@
+**/venv
+**/.idea
+**/logs
+**/__pycache__
+.vscode/
+rpi-docker-elk/
+mausjaeger/images/
+imagewatcher/detections/

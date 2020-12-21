@@ -1,0 +1,2 @@
+0  rosine-without-pray
+1  rosine-with-pray
