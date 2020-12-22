@@ -1,4 +1,4 @@
-# mousehunter-edge
+![Catgate](/gerrito333/mousehunter-edge/docs/header.jpg)
 
 Keep your cat’s prey out of your home with a machine learning trained pet door.
 Turn your Sureflap cat flap into a smart flap that locks when you cat tries to take pray into your home.
