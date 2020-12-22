@@ -4,7 +4,7 @@ Keep your cat’s prey out of your home with a machine learning trained pet door
 Turn your Sureflap cat flap into a smart flap that locks when you cat tries to take pray into your home.
 Leverage Google Coral Edge TPU to run millisecond inference on infrared images captured on your Raspberry Pi.
 
-## Requirements:
+## required hardware:
 
 * [Sureflap](https://amzn.to/3mB8hc0) or [Sureflap Connect](https://amzn.to/3aFExbP)
 * [Raspberry Pi 4B](https://amzn.to/2KiHtAl)
