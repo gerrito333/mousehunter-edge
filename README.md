@@ -56,7 +56,7 @@ https://github.com/tzutalin/labelImg
 
 Convert your labeled data to the TFRecord file format, e.g. with https://roboflow.com
 
-Follow the coral.ai tuturials part "Set up the Docker container":
+Follow the coral.ai tuturials part "Set up the Docker container" on a machine with strong CPU. No GPU is required.
 https://coral.ai/docs/edgetpu/retrain-detection/#set-up-the-docker-container
 
 Copy your TFRecords to docker/object_detection/data
@@ -65,7 +65,7 @@ Configure train_input_reader, eval_input_reader and model.ssd.num_classes  the t
 ```
 docker/object_detection/out/ckpt/pipeline.config
 ```
-Remove all lines following "PREPARING dataset" and execute the prepation script:
+Remove all lines following "PREPARING dataset" and execute the script:
 ```
 docker/object_detection/scripts/prepare_checkpoint_and_dataset.sh
 ```
