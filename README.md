@@ -6,17 +6,17 @@ Leverage Google Coral Edge TPU to run millisecond inference on infrared images c
 
 ## Requirements:
 
-* Sureflap (https://amzn.to/3mB8hc0) or Sureflap Connect (https://amzn.to/3aFExbP))
-* Raspberry Pi 4B (https://amzn.to/2KiHtAl)
-* Raspberry USB Power supply(https://amzn.to/2LRrMAk)
-* Case for Raspberry (https://amzn.to/3nHltxb)
-* MicroSD Card (https://amzn.to/37IbhPM)
-* Google Coral (https://amzn.to/3aB5o8S)
-* Infrared camera (https://amzn.to/38tSWF4)
-* Camera cable (https://amzn.to/3mGkagM)i
-* Jumper cables (https://amzn.to/3rkcYue)
-* Motion detector (https://amzn.to/3aB6nWC)
-* Relay (https://amzn.to/38oLVpe)
+* [Sureflap](https://amzn.to/3mB8hc0) or [Sureflap Connect](https://amzn.to/3aFExbP)
+* [Raspberry Pi 4B](https://amzn.to/2KiHtAl)
+* [Raspberry USB Power supply](https://amzn.to/2LRrMAk)
+* [Case for Raspberry](https://amzn.to/3nHltxb)
+* [MicroSD Card](https://amzn.to/37IbhPM)
+* [Google Coral](https://amzn.to/3aB5o8S)
+* [Infrared camera](https://amzn.to/38tSWF4)
+* [Camera cable](https://amzn.to/3mGkagM)i
+* [Jumper cables](https://amzn.to/3rkcYue)
+* [Motion detector](https://amzn.to/3aB6nWC)
+* [Relay](https://amzn.to/38oLVpe)
 
 ## Setup:
 
