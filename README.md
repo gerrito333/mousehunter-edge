@@ -13,7 +13,7 @@ Leverage Google Coral Edge TPU to run millisecond inference on infrared images c
 * [MicroSD Card](https://amzn.to/37IbhPM)
 * [Google Coral](https://amzn.to/3aB5o8S)
 * [Infrared camera](https://amzn.to/38tSWF4)
-* [Camera cable](https://amzn.to/3mGkagM)i
+* [Camera cable](https://amzn.to/3mGkagM)
 * [Jumper cables](https://amzn.to/3rkcYue)
 * [Motion detector](https://amzn.to/3aB6nWC)
 * [Relay](https://amzn.to/38oLVpe)
