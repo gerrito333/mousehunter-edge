@@ -32,7 +32,33 @@ aws configure
 cp config.yaml ~/.config/mousehunter-edge/config.yaml
 ```
 
-Configure  ~/.config/mousehunter-edge/config.yaml with your AWS bucket name and ensure that aws credentials can read the objects in it.
+Connect motion detector OUT to GPIO8, check `pinout` to see your layout.
+
+```
+  3V3  (1) (2)  5V          <--- motion detector VCC
+ GPIO2  (3) (4)  5V
+ GPIO3  (5) (6)  GND        <--- motion detector GND
+ GPIO4  (7) (8)  GPIO14
+   GND  (9) (10) GPIO15
+GPIO17 (11) (12) GPIO18
+GPIO27 (13) (14) GND
+GPIO22 (15) (16) GPIO23
+   3V3 (17) (18) GPIO24
+GPIO10 (19) (20) GND
+ GPIO9 (21) (22) GPIO25
+GPIO11 (23) (24) GPIO8      <--- motion detector OUT
+   GND (25) (26) GPIO7
+ GPIO0 (27) (28) GPIO1
+ GPIO5 (29) (30) GND
+ GPIO6 (31) (32) GPIO12
+GPIO13 (33) (34) GND
+GPIO19 (35) (36) GPIO16
+GPIO26 (37) (38) GPIO20
+   GND (39) (40) GPIO21
+```
+
+
+Configure  `~/.config/mousehunter-edge/config.yaml` with your AWS bucket name and ensure that aws credentials can read the objects in it.
 Keep APNToken and certfile empty if you do not have it.
 ``` yaml
 bucket: <your AWS S3 bucket>
@@ -42,7 +68,7 @@ alertThreshold: 2.0
 certfile: <your Apple certificate for APN for APN usage> 
 ```
 
-Update WorkingDirectory values for both .service files.
+Update `WorkingDirectory` values for both .service files.
 
 ```bash
 sudo systemctl enable mausjaeger.service
