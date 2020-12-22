@@ -1,6 +1,6 @@
 ![Catgate](docs/header.jpg)
 
-[![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 Keep your cat’s prey out of your home with a machine learning trained pet door.
 Turn your Sureflap cat flap into a smart flap that locks when you cat tries to take pray into your home.
