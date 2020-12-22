@@ -42,6 +42,8 @@ alertThreshold: 2.0
 certfile: <your Apple certificate for APN for APN usage> 
 ```
 
+Update working directory for both .service files.
+
 ```bash
 sudo systemctl enable mausjaeger.service
 sudo systemctl enable imagewatcher.service
