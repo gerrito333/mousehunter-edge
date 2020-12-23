@@ -37,8 +37,8 @@ cp config.yaml ~/.config/mousehunter-edge/config.yaml
 Connect motion detector OUT to GPIO8, check `pinout` to see your layout.
 
 ```
-                                3V3  (1) (2)  5V          <--- motion detector VCC
-                              GPIO2  (3) (4)  5V
+                                3V3  (1) (2)  5V         <--- motion detector VCC
+                              GPIO2  (3) (4)  5V         <--- + port of relay
                               GPIO3  (5) (6)  GND        <--- motion detector GND
                               GPIO4  (7) (8)  GPIO14
                                 GND  (9) (10) GPIO15
@@ -55,8 +55,8 @@ Connect motion detector OUT to GPIO8, check `pinout` to see your layout.
                                GPIO6 (31) (32) GPIO12
                               GPIO13 (33) (34) GND
                               GPIO19 (35) (36) GPIO16
-                              GPIO26 (37) (38) GPIO20
-                                 GND (39) (40) GPIO21
+     s-port of relay --->     GPIO26 (37) (38) GPIO20
+     - port of relay --->        GND (39) (40) GPIO21
 ```
 
 
