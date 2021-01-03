@@ -7,8 +7,7 @@ Turn your Sureflap cat flap into a smart flap that locks when you cat tries to t
 Leverage Google Coral Edge TPU to run millisecond inference on infrared images captured on your Raspberry Pi. Object detection is based on TFLite and a MobileNet v1 SSD.
 
 [![Prey detections video](docs/video_thumb.png)](https://youtu.be/7k1KKuclu8M)
-
-
+[Background story on Medium](https://link.medium.com/ZWStYOJhKcb)
 
 ## Required hardware:
 
