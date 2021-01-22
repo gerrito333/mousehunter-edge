@@ -3,7 +3,7 @@
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 Keep your cat’s prey out of your home with a machine learning trained pet door.
-Turn your Sureflap cat flap into a smart flap that locks when you cat tries to take pray into your home.
+Turn your Sureflap cat flap into a smart flap that locks when you cat tries to take prey into your home.
 Leverage Google Coral Edge TPU to run millisecond inference on infrared images captured on your Raspberry Pi. Object detection is based on TFLite and a MobileNet v1 SSD.
 
 [![Prey detections video](docs/video_thumb.png)](https://youtu.be/7k1KKuclu8M)
