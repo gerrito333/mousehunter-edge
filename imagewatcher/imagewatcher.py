@@ -58,7 +58,6 @@ CURFEW_TIME = config['curfewTime'].get(15)
 scheduler = BackgroundScheduler() 
 scheduler.start()
 
-
 def send_notification(message):
     if CERTFILE == None:
         logger.info('No certfile configured.')
@@ -232,6 +231,5 @@ if __name__ == "__main__":
         notifier.loop()
     except:
         print('Unexpected error:')
-        print(str(e))
-
+        print(sys.exc_info()[0])
 
