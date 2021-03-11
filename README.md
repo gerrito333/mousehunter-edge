@@ -3,8 +3,11 @@
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 Keep your cat’s prey out of your home with a machine learning trained pet door.
-Turn your Sureflap cat flap into a smart flap that locks when you cat tries to take pray into your home.
+Turn your Sureflap cat flap into a smart flap that locks when you cat tries to take prey into your home.
 Leverage Google Coral Edge TPU to run millisecond inference on infrared images captured on your Raspberry Pi. Object detection is based on TFLite and a MobileNet v1 SSD.
+
+[![Prey detections video](docs/video_thumb.png)](https://youtu.be/7k1KKuclu8M)
+[Background story on Medium](https://link.medium.com/ZWStYOJhKcb)
 
 ## Required hardware:
 
@@ -37,26 +40,26 @@ cp config.yaml ~/.config/mousehunter-edge/config.yaml
 Connect motion detector OUT to GPIO8, check `pinout` to see your layout.
 
 ```
-  3V3  (1) (2)  5V          <--- motion detector VCC
- GPIO2  (3) (4)  5V
- GPIO3  (5) (6)  GND        <--- motion detector GND
- GPIO4  (7) (8)  GPIO14
-   GND  (9) (10) GPIO15
-GPIO17 (11) (12) GPIO18
-GPIO27 (13) (14) GND
-GPIO22 (15) (16) GPIO23
-   3V3 (17) (18) GPIO24
-GPIO10 (19) (20) GND
- GPIO9 (21) (22) GPIO25
-GPIO11 (23) (24) GPIO8      <--- motion detector OUT
-   GND (25) (26) GPIO7
- GPIO0 (27) (28) GPIO1
- GPIO5 (29) (30) GND
- GPIO6 (31) (32) GPIO12
-GPIO13 (33) (34) GND
-GPIO19 (35) (36) GPIO16
-GPIO26 (37) (38) GPIO20
-   GND (39) (40) GPIO21
+                                3V3  (1) (2)  5V         <--- motion detector VCC
+                              GPIO2  (3) (4)  5V         <--- + port of relay
+                              GPIO3  (5) (6)  GND        <--- motion detector GND
+                              GPIO4  (7) (8)  GPIO14
+                                GND  (9) (10) GPIO15
+                              GPIO17 (11) (12) GPIO18
+                              GPIO27 (13) (14) GND
+                              GPIO22 (15) (16) GPIO23
+                                 3V3 (17) (18) GPIO24
+                              GPIO10 (19) (20) GND
+                               GPIO9 (21) (22) GPIO25
+                              GPIO11 (23) (24) GPIO8      <--- motion detector OUT
+                                 GND (25) (26) GPIO7
+                               GPIO0 (27) (28) GPIO1
+                               GPIO5 (29) (30) GND
+                               GPIO6 (31) (32) GPIO12
+                              GPIO13 (33) (34) GND
+                              GPIO19 (35) (36) GPIO16
+     s-port of relay --->     GPIO26 (37) (38) GPIO20
+     - port of relay --->        GND (39) (40) GPIO21
 ```
 
 
