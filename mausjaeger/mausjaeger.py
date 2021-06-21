@@ -37,7 +37,7 @@ def MOTION(PIR_GPIO):
      image_list = []
      for i in range(0,40):
           image_list.append(filename + '-' + str(i) + '.jpg')
-     if datetime.datetime.now().hour in [0, 1, 2, 3, 4, 5, 6, 7, 8, 17, 18, 19, 20, 21, 22, 23]:
+     if datetime.datetime.now().hour in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]:
           logger.info('Start Recording')
           camera.capture_sequence(image_list, use_video_port=True)
           logger.info('Stop Recording')
@@ -59,6 +59,6 @@ try:
 
      while 1:
           time.sleep(60)
-except KeyboardInterrupt:
+finally:
     GPIO.cleanup()
 

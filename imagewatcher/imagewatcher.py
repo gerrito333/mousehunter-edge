@@ -157,8 +157,8 @@ class EventHandler(pyinotify.ProcessEvent):
             formatted_score_no_pray = "{:.2f}".format(score_no_pray)
             formatted_score_pray = "{:.2f}".format(score_with_pray)
             msg = f"Rosine ohne Maus, Confidence: {formatted_score_pray}/{formatted_score_no_pray}."
-            send_notification(msg)
-            logger.info("Sending notification completed.")
+            #send_notification(msg)
+            #logger.info("Sending notification completed.")
    
 
         filename = ''.join(filename_arr[:-1]) + '_' + label + '_' + filename_arr[-1] 
@@ -232,4 +232,6 @@ if __name__ == "__main__":
     except:
         print('Unexpected error:')
         print(sys.exc_info()[0])
+    finally:
+        relay.cleanup()
 

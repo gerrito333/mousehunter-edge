@@ -4,8 +4,14 @@ GPIO.setmode(GPIO.BCM) # GPIO Nummern statt Board Nummern
  
 RELAIS_1_GPIO = 26
 wait_delay = 0.2
-GPIO.setup(RELAIS_1_GPIO, GPIO.OUT) # GPIO Modus zuweisen
+try:
+    GPIO.setup(RELAIS_1_GPIO, GPIO.OUT) # GPIO Modus zuweisen
+except:
+    print("GPIO error!!!")
 
+def cleanup():
+    print("cleanup")
+    GPIO.cleanup()
 
 def lock(unlock=False):
     maxloopindex=2
