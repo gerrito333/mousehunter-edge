@@ -5,6 +5,7 @@ import datetime
 import logging
 import time
 import json
+import signal
 from logging.handlers import RotatingFileHandler
 import relay
 
@@ -84,10 +85,14 @@ class EventHandler(pyinotify.ProcessEvent):
         image = Image.open(event.pathname)
         scale = detect.set_input(interpreter, image.size, lambda size: image.resize(size, Image.ANTIALIAS))
         start = time.perf_counter()
+        logger.info("Invoke interpreter ...")
         interpreter.invoke()
+        logger.info("Invoke interpreter done.")
         inference_time = time.perf_counter() - start
         inference_time_string = '%.2f ms' % (inference_time * 1000)
+        logger.info("Get outputs ...")
         objs = detect.get_output(interpreter, 0.1, scale)
+        logger.info("Get outputs done.")
         
         global score_with_pray
         global score_no_pray
@@ -197,9 +202,14 @@ class EventHandler(pyinotify.ProcessEvent):
                 logger.info(f'Delete old detection log: {detection_log}')
                 os.remove('detections/' + detection_log) 
 
+def exit_gracefully(signum, frame):
+    logging.info('GRACEFUL EXIT ...')
+    relay.cleanup()
+    logging.info('GRACEFUL EXIT done.')
+    exit()
+
 
 if __name__ == "__main__":
-
     logger.info('Image watcher started')
     logger.info('')
     logger.info('Configuration:')
@@ -213,6 +223,9 @@ if __name__ == "__main__":
     logger.info('***********************')
 
 
+
+    signal.signal(signal.SIGTERM, exit_gracefully)
+
     labels = detect_image.load_labels('model/cat_labels.txt') 
     interpreter = detect_image.make_interpreter('model/output_tflite_graph_edgetpu.tflite')
     interpreter.allocate_tensors()
@@ -220,18 +233,17 @@ if __name__ == "__main__":
     path = '/home/pi/PycharmProjects/mausjaeger/images'
 
     import pyinotify
+    
+    wm = pyinotify.WatchManager()  # Watch Manager
+    mask = pyinotify.IN_CLOSE_WRITE  # watched events
+
+    handler = EventHandler()
+    notifier = pyinotify.Notifier(wm, handler)
+    wdd = wm.add_watch(path, mask, rec=True)
+
     try:
-        wm = pyinotify.WatchManager()  # Watch Manager
-        mask = pyinotify.IN_CLOSE_WRITE  # watched events
-
-        handler = EventHandler()
-        notifier = pyinotify.Notifier(wm, handler)
-        wdd = wm.add_watch(path, mask, rec=True)
-
         notifier.loop()
     except:
         print('Unexpected error:')
-        print(sys.exc_info()[0])
-    finally:
-        relay.cleanup()
+        print(sys.exc_info())
 

@@ -5,6 +5,7 @@ import RPi.GPIO as GPIO
 import time
 import logging
 import picamera  # Importing the library for camera module
+import signal
 from datetime import date
 
 camera = picamera.PiCamera()  # Setting up the camera
@@ -21,6 +22,8 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 logger.setLevel(logging.INFO)
 logHandler.setFormatter(formatter)
 logHandler.setLevel(logging.INFO)
+if (logger.hasHandlers()):
+    logger.handlers.clear()
 logger.addHandler(logHandler)
 
 
@@ -30,6 +33,12 @@ GPIO.setmode(GPIO.BOARD)
 #GPIO Pin definieren fuer den Dateneingang vom Sensor
 PIR_GPIO = 8
 GPIO.setup(PIR_GPIO, GPIO.IN)
+
+def exit_gracefully(signum, frame):
+    logging.info("GRACEFUL EXIT ...")
+    GPIO.cleanup()
+    logging.info("GRACEFUL EXIT done.")
+    exit()
 
 def MOTION(PIR_GPIO):
      capture_time = datetime.datetime.now()
@@ -50,6 +59,7 @@ time.sleep(1)
 logger.info('Motion detection activated')
 time.sleep(1)
 logger.info("**************************************")
+signal.signal(signal.SIGTERM, exit_gracefully)
 capture_time = datetime.datetime.now()
 filename = f'images/image_{capture_time.strftime("%Y-%m-%d_%H:%M:%S")}.jpg'
 camera.capture(filename)
@@ -60,5 +70,5 @@ try:
      while 1:
           time.sleep(60)
 finally:
-    GPIO.cleanup()
+    logger.info("Stopped .")
 
