@@ -20,7 +20,8 @@ import detect
 from PIL import Image
 from decimal import *
 from apscheduler.schedulers.background import BackgroundScheduler
-from apns import APNs, Frame, Payload
+from apns2.client import APNsClient
+from apns2.payload import Payload
 
 import timeit
 import confuse
@@ -66,11 +67,10 @@ def send_notification(message):
     if APNTOKEN == None:
         logger.info('No APN token configured.')
         return
-    hub = APNs(use_sandbox=True, cert_file=CERTFILE, key_file=CERTFILE)
-    # Send a notification to iOS device
+    client = APNsClient(CERTFILE, use_sandbox=True, use_alternative_port=False)
+    topic = 'gerrit.mousehunter'
     payload = Payload(alert=message, sound="default")
-    hub.gateway_server.send_notification(APNTOKEN, payload)
-
+    client.send_notification(APNTOKEN, payload, topic)
 
 class EventHandler(pyinotify.ProcessEvent):
     def process_IN_CLOSE_WRITE(self, event):
@@ -217,6 +217,9 @@ if __name__ == "__main__":
     logger.info(f'Alert Threshold: {ALERT_THRESHOLD}')
     logger.info(f'Apple APN Token: {APNTOKEN} ')
     logger.info(f'Certfile: {CERTFILE}')
+    logger.info('send push ...')
+    send_notification('Imagewatcher started.')
+    logger.info('push sent')
 
     time.sleep(1)
     relay.test()
