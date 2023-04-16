@@ -1,5 +1,6 @@
 bucket:
-curfewTime: 15
+curfewTime: 5
 APNToken:
+APNToken2:
 alertThreshold: 2.0
 certfile:

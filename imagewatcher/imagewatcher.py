@@ -45,6 +45,7 @@ logger.addHandler(logHandler)
 BUCKET = config['bucket'].get(None)
 ALERT_THRESHOLD = config['alertThreshold'].get(2)
 APNTOKEN = config['APNToken'].get(None)
+APNTOKEN2 = config['APNToken2'].get(None)
 CERTFILE = config['certfile'].get(None)
 
 if BUCKET == None:
@@ -67,10 +68,18 @@ def send_notification(message):
     if APNTOKEN == None:
         logger.info('No APN token configured.')
         return
+    if APNTOKEN2 == None:
+        logger.info('No APN Token 2 configured.')
+        return
     client = APNsClient(CERTFILE, use_sandbox=True, use_alternative_port=False)
     topic = 'gerrit.mousehunter'
     payload = Payload(alert=message, sound="default")
-    client.send_notification(APNTOKEN, payload, topic)
+    try:
+        client.send_notification(APNTOKEN, payload, topic)
+        client.send_notification(APNTOKEN2, payload, topic)
+    except:
+        logger.error('Error while sending notification.')
+        logger.error(sys.exc_info())
 
 class EventHandler(pyinotify.ProcessEvent):
     def process_IN_CLOSE_WRITE(self, event):
@@ -91,7 +100,7 @@ class EventHandler(pyinotify.ProcessEvent):
         inference_time = time.perf_counter() - start
         inference_time_string = '%.2f ms' % (inference_time * 1000)
         logger.info("Get outputs ...")
-        objs = detect.get_output(interpreter, 0.1, scale)
+        objs = detect.get_output(interpreter, 0.4, scale)
         logger.info("Get outputs done.")
         
         global score_with_pray
