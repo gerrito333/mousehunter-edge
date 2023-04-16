@@ -69,6 +69,7 @@ Keep APNToken and certfile empty if you do not have it.
 bucket: <your AWS S3 bucket>
 curfewTime: 15
 APNToken: <your Apple Push Notification Service (APNs) Token>
+APNToken2: <your 2nd Apple Push Notification Service (APNs) Token>
 alertThreshold: 2.0
 certfile: <your Apple certificate for APN for APN usage> 
 ```
